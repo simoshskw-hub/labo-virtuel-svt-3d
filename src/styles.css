@@ -1,0 +1,12 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+.app header { padding: 12px 16px; background: #1e293b; }
+.app h1 { margin: 0 0 8px; font-size: 1.3rem; }
+.app nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.app nav button { padding: 8px 12px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: inherit; cursor: pointer; }
+.app nav button.active { background: #2563eb; border-color: #2563eb; }
+.app main { padding: 16px; display: grid; gap: 16px; }
+.panel { background: #1e293b; border-radius: 8px; padding: 12px; }
+.panel h2 { margin: 0 0 8px; font-size: 1.05rem; }
+.slider { display: grid; gap: 4px; margin: 8px 0; }
+button { font: inherit; }
+canvas { max-width: 100%; }
