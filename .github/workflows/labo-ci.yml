@@ -1,0 +1,24 @@
+name: Labo CI
+on:
+  workflow_dispatch:
+    inputs:
+      resumeUrl:
+        description: 'n8n resume URL'
+        required: false
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+      - name: Notify n8n
+        if: always()
+        run: |
+          curl -s -X POST -H "Content-Type: application/json" -d '{"status":"${{ job.status }}","run_url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' "${{ github.event.inputs.resumeUrl }}"
